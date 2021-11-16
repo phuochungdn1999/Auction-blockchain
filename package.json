@@ -35,6 +35,8 @@
     "web3": "^1.4.0"
   },
   "dependencies": {
+    "@nomiclabs/hardhat-solhint": "^2.0.0",
+    "@openzeppelin/contracts": "^4.3.2",
     "bignumber.js": "^9.0.1",
     "ethereumjs-tx": "^2.1.2",
     "hardhat-contract-sizer": "^2.0.3",
