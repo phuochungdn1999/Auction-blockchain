@@ -198,6 +198,14 @@ contract Auction is ERC721Enumerable, Ownable {
 
   function approveWinner(uint256 id) external ownerOfBid(id) auctionExist(id) {
     require(
+      listCard[id].addressOfHighestBid != address(0),
+      "Auction: This auction is not auction yet"
+    );
+    require(
+      listCard[id].highestBid >= listCard[id].reserveBid,
+      "Auction: Current bid must greater than reserver bid"
+    );
+    require(
       !listCard[id].endAuction,
       "Auction: Only can call this function one time"
     );
@@ -243,8 +251,19 @@ contract Auction is ERC721Enumerable, Ownable {
       (bool success, ) = msg.sender.call{ value: amount }("");
       require(success, "Auction: User withdraw fail");
       ownerWithdraw[id] = true;
-    }else{
-        revert("Auction: The owner already withdraw");
+    } else {
+      revert("Auction: The owner already withdraw");
     }
+  }
+
+  function getWinner(uint256 id)
+    external
+    view
+    auctionExist(id)
+    returns (address)
+  {
+    if (listCard[id].endAuction || block.timestamp >= listCard[id].to) {
+      return listCard[id].addressOfHighestBid;
+    } else return address(0);
   }
 }
