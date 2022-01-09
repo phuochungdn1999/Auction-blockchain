@@ -45,20 +45,29 @@ describe("Auction test", function () {
       from: user1,
       value: ethers.utils.parseEther("0.0001"),
     });
-    assert.equal(user1,(await auction.listCard(1)).addressOfHighestBid)
-    assert.equal((ethers.utils.parseEther("0.0001")).toString(),((await auction.listCard(1)).highestBid).toString())
+    assert.equal(user1, (await auction.listCard(1)).addressOfHighestBid);
+    assert.equal(
+      ethers.utils.parseEther("0.0001").toString(),
+      (await auction.listCard(1)).highestBid.toString()
+    );
     await auction.makeOffer(1, {
       from: user2,
       value: ethers.utils.parseEther("0.001"),
     });
-    assert.equal(user2,(await auction.listCard(1)).addressOfHighestBid)
-    assert.equal((ethers.utils.parseEther("0.001")).toString(),((await auction.listCard(1)).highestBid).toString())
+    assert.equal(user2, (await auction.listCard(1)).addressOfHighestBid);
+    assert.equal(
+      ethers.utils.parseEther("0.001").toString(),
+      (await auction.listCard(1)).highestBid.toString()
+    );
     await auction.makeOffer(1, {
       from: user3,
       value: ethers.utils.parseEther("0.01"),
     });
-    assert.equal(user3,(await auction.listCard(1)).addressOfHighestBid)
-    assert.equal((ethers.utils.parseEther("0.01")).toString(),((await auction.listCard(1)).highestBid).toString())
-    console.log((await auction.listCard(1)).totalBalance.toString())
+    assert.equal(user3, (await auction.listCard(1)).addressOfHighestBid);
+    assert.equal(
+      ethers.utils.parseEther("0.01").toString(),
+      (await auction.listCard(1)).highestBid.toString()
+    );
+    console.log((await auction.listCard(1)).totalBalance.toString());
   });
 });
