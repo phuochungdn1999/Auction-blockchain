@@ -286,6 +286,8 @@ contract Auction is ERC721Enumerable, Ownable {
             "Auction: Only winner can call this function"
         );
         listCard[id].userConfirmed = true;
+                   uint256 amount = listCard[id].highestBid;
+            (bool success, ) = msg.sender.call{value: amount}("");
         return true;
     }
 

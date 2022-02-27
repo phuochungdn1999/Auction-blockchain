@@ -41,9 +41,10 @@ module.exports = {
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
     rinkeby: {
-      url: process.env.RINKEBY_URL || "",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      url: "https://speedy-nodes-nyc.moralis.io/eab63686b28a1d9bdec08dc7/eth/rinkeby",
+      accounts: [
+        "9c36bd51fd273f4b4843a76a6c83ab0931c7f5876806297e0b8112b29dd6c0ef",
+      ],
     },
   },
   gasReporter: {
